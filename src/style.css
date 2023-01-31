@@ -116,6 +116,55 @@ input {
 input::placeholder {
   font-weight: 500;
   color: #622d2d;
+  font-size: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .main_contents_wrapper {
+    flex-direction: row;
+    padding: 20px;
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+  hr {
+    display: none;
+  }
+  .score_container {
+    width: 50%;
+  }
+  .form_container {
+    width: 50%;
+  }
+  h1 {
+    font-size: 48px;
+  }
+
+  span {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  button {
+    color: #087708;
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  input {
+    padding: 12px 24px;
+  }
+
+  input::placeholder {
+    font-size: 14px;
+  }
+
+  form button {
+    align-self: flex-end;
+  }
+
 }
 
 
