@@ -115,27 +115,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_getPoints__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/getPoints */ \"./src/modules/getPoints.js\");\n\n\n\nconst refreshButton = document.querySelector('.refresh_button');\nconst formName = document.querySelector('.form_name');\nconst formPoints = document.querySelector('.form_points');\nconst formSubmit = document.querySelector('.form_submit');\nconst scoreWrapper = document.querySelector('.score_wrapper');\n\nconst getpoint = new _modules_getPoints__WEBPACK_IMPORTED_MODULE_1__[\"default\"](pointsList);\n\nrefreshButton.addEventListener('click', () => getpoint.refreshPoints());\n\nformSubmit.addEventListener('click', (e) => {\n    e.preventDefault();\n    getpoint.addPointsToList(formName.value, formPoints.value);\n    formName.value = '';\n    formPoints.value = '';\n});\n\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/modules/getPoints.js":
-/*!**********************************!*\
-  !*** ./src/modules/getPoints.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _points__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./points */ \"./src/modules/points.js\");\n\n\nclass getPoints{\n    constructor(pointsList) {\n        this.baseURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';\n        this.ID = 'Zl4d7IVkemOTTVg2fUdz';\n        this.games = 'games';\n        this.scoresInURL = 'scores';\n        this.pointsList = pointsList;\n        this.points = [];\n    }\n    \n    // baseURL/games/:id/scores/\n\n    getAllPoints = () => fetch(`${this.baseURL}/${this.games}/${this.ID}/${this.scoresInURL}/`).then((response) => response.json());\n\n    newPoints = (name, point) => {\n        if (!name || !point) {\n            return {};\n        }\n    \n        return fetch(`${this.baseURL}/${this.games}/${this.ID}/${this.scoresInURL}/`, {\n            method: 'POST',\n            body: JSON.stringify({user: name, point}),\n            headers: {'content-type': 'application/json, charset=UTF-8,'},\n        }).then((response) => response.json());\n    }\n    pointsArray = (listOfPoints) => {\n        this.points = [];\n        listOfPoints.forEach((point) => {\n            const newPoints = new _points__WEBPACK_IMPORTED_MODULE_0__[\"default\"](points.user, score.score);\n            this.points.push(newPoints);  \n        });\n    }\n    pointsListDom = () => {\n        this.pointsList.innerHTML = '';\n\n        this.points.forEach((point) => {\n            pointDom = point.draw();\n            this.pointsList.appendChild(pointDom);\n        });\n    }\n    refreshPoints = async () => {\n        const listOfPoints = await this.getAllPoints();\n        this.pointsArray(listOfPoints.result);\n        this.pointsListDom();\n    }\n    addPointsToList = async (name, point) => {\n        const response = await this.newPoints(name, point);\n\n        if (!response) {\n            return;\n        }\n        if (response.result === 'Points created successfully') {\n            this.refreshPoints();\n        }\n    }\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getPoints);\n\n//# sourceURL=webpack://leaderboard/./src/modules/getPoints.js?");
-
-/***/ }),
-
-/***/ "./src/modules/points.js":
-/*!*******************************!*\
-  !*** ./src/modules/points.js ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass Points {\n    constructor(name, points) {\n        this.name = name;\n        this.points = points;\n    }\n\n    // Creating input container \n\n    scoreWrapperElements = () => {\n        const elementsContainer = document.createElement('div');\n        const nameContainer = document.createElement('div');\n        const pointsContainer = document.createElement('div');\n\n        nameContainer.innerHTML = this.name;\n        pointsContainer.innerHTML = this.points;\n\n        elementsContainer.appendChild(nameContainer);\n        elementsContainer.appendChild(pointsContainer);\n\n        elementsContainer.classList.add('points_wrapper');\n\n        return elementsContainer;\n    }\n\n}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Points);\n\n//# sourceURL=webpack://leaderboard/./src/modules/points.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
 
 /***/ })
 
