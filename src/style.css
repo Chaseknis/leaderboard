@@ -24,6 +24,7 @@ h1 {
   font-style: italic;
   padding-top: 60px;
 }
+
 h1 span {
   color: #ffca7a;
 }
@@ -89,8 +90,13 @@ button {
   border-bottom-color: #ffca7a;
   border-left-style: none;
   border-right-style: none;
-  transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1); 
+  transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
 }
+
+form button {
+  align-self: center;
+}
+
 button:hover {
   color: #ffca7a;
   border-top-style: none;
@@ -125,12 +131,8 @@ form {
   gap: 1rem;
 }
 
-form button {
-  align-self: center;
-}
-
 input {
-  color: #ff9900;
+  color: #f90;
   width: 100%;
   padding: 6px 12px;
   background-color: transparent;
@@ -173,7 +175,7 @@ input::placeholder {
 
 .points_wrapper:nth-child(odd) {
   background-color: transparent;
-  color: #ff9900;
+  color: #f90;
   border-radius: 5px;
   border-top-width: 1px;
   border-bottom-width: 1px;
@@ -186,16 +188,20 @@ input::placeholder {
 ::-webkit-scrollbar {
   width: 4px;
 }
+
 ::-webkit-scrollbar-track {
   background: none;
 }
+
 ::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 5px;
 }
+
 .sidebar:hover::-webkit-scrollbar-thumb {
-background-color: #ffca7a;
+  background-color: #ffca7a;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background-color: #ffca7a;
 }
